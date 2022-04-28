@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 
 import Home from './views/home';
+import NavBar from './components/navbar'
 
 // let match = useMatch();
 // let { attrUriParam } = useParams();
@@ -17,10 +18,14 @@ import Home from './views/home';
 function App() {
   return (
     <Router>
+            
+            <NavBar/>
+
             <Routes>
               <Route path="/home" element={<Home/>} />     
               <Route path="/" element={<Home/>} />
             </Routes>
+    
     </Router>
   );
 }
