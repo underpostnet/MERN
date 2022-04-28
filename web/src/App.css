@@ -113,4 +113,6 @@ a {
 input {
 	padding: 10px;
 	margin: 5px;
+	display: block;
+	position: relative;
 }
