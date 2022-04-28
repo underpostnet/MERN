@@ -1,6 +1,8 @@
 import { Component } from "react";
 import SimpleReactValidator from 'simple-react-validator';
 import LibrosServices from '../services/libros/libros.service';
+// import { useNavigate } from "react-router-dom";
+// const navigate = useNavigate();
 
 export default class FormLibro extends Component {
     
@@ -30,15 +32,20 @@ export default class FormLibro extends Component {
         event.preventDefault();
 
         if (this.validator.allValid()) {
+          
+          const request = await this.libroService.postLibro(this.state);
+       
+          console.log(request);
+          if(request.data && request.data._id){
+            console.log('campos validos');
            
-          console.log('campos validos');
-          console.log(await this.libroService.postLibro(this.state));
+          }
 
         } else {
           this.validator.showMessages();
           // rerender to show messages for the first time
           // you can use the autoForceUpdate option to do this automatically`
-          this.forceUpdate();
+          // this.forceUpdate();
         }
 
       }
