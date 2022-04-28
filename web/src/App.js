@@ -1,14 +1,27 @@
-import logo from './logo.svg';
+
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  // Link,
+  // useMatch,
+  // useParams
+} from "react-router-dom";
+
+import Home from './views/home';
+
+// let match = useMatch();
+// let { attrUriParam } = useParams();
 
 function App() {
   return (
-    <div>
-          {/* Home View */}
-        
-            <br></br>
-            <img src={logo} className="inl App-logo" alt="logo" /> Test
-    </div>
+    <Router>
+            <Routes>
+              <Route path="/home" element={<Home/>} />     
+              <Route path="/" element={<Home/>} />
+            </Routes>
+    </Router>
   );
 }
 
