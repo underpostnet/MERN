@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
-const URI = 'mongodb://localhost:27017/hospital-alerce';
-  // 'mongodb+srv://hospital-alerce:aJpHKoevpAhkiNuB@cluster0.6pwpz.mongodb.net/hospital-alerce';
+const URI = 'mongodb://localhost:27017/libros';
 
 mongoose
   .connect(URI, {

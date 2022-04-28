@@ -2,8 +2,8 @@ const { Router } = require('express');
 
 const router = Router();
 
-const pacientes = require('./pacientes');
+const libros = require('./libros');
 
-router.use('/pacientes', pacientes);
+router.use('/libros', libros);
 
 module.exports = router;

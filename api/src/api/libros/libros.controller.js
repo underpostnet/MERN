@@ -1,14 +1,14 @@
 const fs = require('fs');
 const path = require('path');
 
-const pacientes = require('./pacientes.services');
+const libros = require('./libros.services');
 
-const pacientesCtrl = {};
+const librosCtrl = {};
 
-// Find all pacientes
-pacientesCtrl.findAll = async (req, res) => {
+// Find all libros
+librosCtrl.findAll = async (req, res) => {
   try {
-    const result = await pacientes.findAll();
+    const result = await libros.findAll();
     res.json(result);
   } catch (err) {
     res.status(500).json({
@@ -17,10 +17,10 @@ pacientesCtrl.findAll = async (req, res) => {
   }
 };
 
-// Find paciente by id
-pacientesCtrl.findById = async (req, res) => {
+// Find libro by id
+librosCtrl.findById = async (req, res) => {
   try {
-    const result = await pacientes.findById(req.params.id);
+    const result = await libros.findById(req.params.id);
     res.json(result);
   } catch (err) {
     res.status(500).json({
@@ -29,12 +29,12 @@ pacientesCtrl.findById = async (req, res) => {
   }
 };
 
-// Create paciente
-pacientesCtrl.create = async (req, res) => {
+// Create libro
+librosCtrl.create = async (req, res) => {
   try {
     console.log(req.body);
-    const paciente = req.body;
-    const result = await pacientes.create(paciente);
+    const libro = req.body;
+    const result = await libros.create(libro);
     if (!result) {
       res.status(400).json(result.errors);
     } else {
@@ -47,10 +47,10 @@ pacientesCtrl.create = async (req, res) => {
   }
 };
 
-// Update paciente
-pacientesCtrl.update = async (req, res) => {
+// Update libro
+librosCtrl.update = async (req, res) => {
   try {
-    const result = await pacientes.update(req.params.id, req.body);
+    const result = await libros.update(req.params.id, req.body);
     res.json(result);
   } catch (err) {
     res.status(500).json({
@@ -59,10 +59,10 @@ pacientesCtrl.update = async (req, res) => {
   }
 };
 
-// Delete paciente
-pacientesCtrl.delete = async (req, res) => {
+// Delete libro
+librosCtrl.delete = async (req, res) => {
   try {
-    const result = await pacientes.delete(req.params.id);
+    const result = await libros.delete(req.params.id);
     res.json(result);
   } catch (err) {
     res.status(500).json({
@@ -71,10 +71,10 @@ pacientesCtrl.delete = async (req, res) => {
   }
 };
 
-// Edit paciente
-pacientesCtrl.edit = async (req, res) => {
+// Edit libro
+librosCtrl.edit = async (req, res) => {
   try {
-    const result = await pacientes.edit(req.params.id, req.body);
+    const result = await libros.edit(req.params.id, req.body);
     res.json(result);
   } catch (err) {
     res.status(500).json({
@@ -84,7 +84,7 @@ pacientesCtrl.edit = async (req, res) => {
 };
 
 // Metodo que sube la imagen y lo asocia a fotoPersonal del modelo
-pacientesCtrl.uploadImage = async (req, res) => {
+librosCtrl.uploadImage = async (req, res) => {
   try {
     const file = req.file;
     const { id } = req.params.id;
@@ -94,7 +94,7 @@ pacientesCtrl.uploadImage = async (req, res) => {
         message: 'No se ha subido ninguna imagen',
       });
     }
-    const result = await pacientes.uploadImage(id, file);
+    const result = await libros.uploadImage(id, file);
     res.json(result);
   } catch (err) {
     res.status(500).json({
@@ -103,8 +103,8 @@ pacientesCtrl.uploadImage = async (req, res) => {
   }
 };
 
-// Get paciente image
-pacientesCtrl.getImage = (req, res) => {
+// Get libro image
+librosCtrl.getImage = (req, res) => {
   const file = req.params.filename;
   const pathFile = `uploads/${file}`;
 
@@ -117,4 +117,4 @@ pacientesCtrl.getImage = (req, res) => {
   });
 };
 
-module.exports = pacientesCtrl;
+module.exports = librosCtrl;
