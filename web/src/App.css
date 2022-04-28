@@ -96,3 +96,16 @@ a {
   width: 100px;
   margin: 5px;
 }
+
+
+.btn-navbar {
+	padding: 10px;
+	margin: 5px;
+	border: 2px solid magenta;
+	transition: .3s;
+}
+
+.btn-navbar:hover {
+	color: yellow;
+	border: 2px solid yellow;
+}

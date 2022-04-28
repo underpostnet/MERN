@@ -14,7 +14,11 @@ function NavBar() {
 
             <img src={logo} className="inl App-logo" alt="logo" />
 
-            <Link className='inl' to="/home">Home</Link>
+            <Link className='inl btn-navbar' to="/home">Home</Link>
+
+            <Link className='inl btn-navbar' to="/listar">Listar Libros</Link>
+
+            <Link className='inl btn-navbar' to="/nuevo">Agregar Libro</Link>
 
             <br></br>
 
