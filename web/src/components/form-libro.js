@@ -1,5 +1,6 @@
 import { Component } from "react";
 import SimpleReactValidator from 'simple-react-validator';
+import LibrosServices from '../services/libros/libros.service';
 
 export default class FormLibro extends Component {
     
@@ -19,9 +20,11 @@ export default class FormLibro extends Component {
 
         this.validator = new SimpleReactValidator();
 
+        this.libroService = new LibrosServices();
+
       }
     
-      handleSubmit(event) {
+      async handleSubmit(event) {
         console.log('handleSubmit', event);
         console.log(JSON.stringify(this.state, null, 4));
         event.preventDefault();
@@ -29,6 +32,7 @@ export default class FormLibro extends Component {
         if (this.validator.allValid()) {
            
           console.log('campos validos');
+          console.log(await this.libroService.postLibro(this.state));
 
         } else {
           this.validator.showMessages();

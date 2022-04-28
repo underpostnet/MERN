@@ -2,10 +2,11 @@
 import API_URL  from "../global.service";
 import axios from "axios";
 
-class LibrosService {
+export default class LibrosServices {
+  
 
     constructor(){
-        this.SERVICE_URL = API_URL + '/libros';
+      this.SERVICE_URL = API_URL + '/libros';
     }
 
     async getLibros() {
@@ -13,7 +14,7 @@ class LibrosService {
         axios.get(this.SERVICE_URL)
           .then( response => {
             console.log('success getLibros', response);
-            resolve(reponse);
+            resolve(response);
           })
           .catch( error => {
             console.log('error getLibros', error);
@@ -26,7 +27,7 @@ class LibrosService {
         axios.post(this.SERVICE_URL, postObj)
           .then( response => {
             console.log('success postLibro', response);
-            resolve(reponse);
+            resolve(response);
           })
           .catch( error => {
             console.log('error postLibro', error);
@@ -47,5 +48,3 @@ class LibrosService {
     }
 
 }
-
-export default LibrosService;
