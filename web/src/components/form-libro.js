@@ -8,6 +8,9 @@ export default class FormLibro extends Component {
         this.state = {nombreLibro: ''};
     
         this.handleSubmit = this.handleSubmit.bind(this);
+
+        this.validator = new SimpleReactValidator();
+
       }
     
    
@@ -15,6 +18,18 @@ export default class FormLibro extends Component {
         console.log('handleSubmit', event);
         console.log('nombreLibro', this.state.nombreLibro);
         event.preventDefault();
+
+        if (this.validator.allValid()) {
+           
+          console.log('campos validos');
+
+        } else {
+          this.validator.showMessages();
+          // rerender to show messages for the first time
+          // you can use the autoForceUpdate option to do this automatically`
+          this.forceUpdate();
+        }
+
       }
     
       render() {
@@ -28,9 +43,10 @@ export default class FormLibro extends Component {
                 value={this.state.nombreLibro} 
                 onChange={e => this.setState({ nombreLibro: e.target.value })} 
             />
+            {this.validator.message('nombreLibro', this.state.nombreLibro, 'required')}
 
 
-            <input type="submit" value="Submit" />
+            <input className="in" type="submit" value="Submit" />
           </form>
         );
       }

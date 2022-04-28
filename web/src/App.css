@@ -109,3 +109,8 @@ a {
 	color: yellow;
 	border: 2px solid yellow;
 }
+
+input {
+	padding: 10px;
+	margin: 5px;
+}
