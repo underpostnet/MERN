@@ -3,41 +3,12 @@
 const { Schema, model } = require('mongoose');
 
 const LibrosSchema = new Schema({
-
+    ISBN: { type: String },
+    nombreLibro: { type: String },
+    autor: { type: String },
+    editorial: { type: String },
+    portada: { type: String  },
+    paginas: { type: Number  }
 });
-
-// rut: {
-//   type: String,
-//   required: true,
-//   unique: true,
-// },
-// nombre: {
-//   type: String,
-//   required: true,
-// },
-// edad: {
-//   type: Number,
-//   required: true,
-// },
-// sexo: {
-//   type: String,
-//   required: true,
-// },
-// fotoPersonal: {
-//   type: String,
-//   // required: true,
-// },
-// fechaIngreso: {
-//   type: Date,
-//   required: true,
-// },
-// enfermedad: {
-//   type: String,
-// },
-// revisado: {
-//   type: Boolean,
-//   required: true,
-//   default: false,
-// },
 
 module.exports = model('Libros', LibrosSchema);
