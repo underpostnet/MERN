@@ -6,16 +6,22 @@ export default class FormLibro extends Component {
     
     constructor(props) {
         super(props);
+        
+        this._mode = this.props._updateLibro && window._updateLibro ? "update" : "new";
 
-        this.state = {
-          ISBN: "",
-          nombreLibro: "",
-          autor: "",
-          editorial: "",
-          portada: "",
-          paginas: 0        
-        };
-    
+        if(this._mode == "update"){
+          this.state =  window._updateLibro;
+        }else{
+          this.state = {
+            ISBN: "",
+            nombreLibro: "",
+            autor: "",
+            editorial: "",
+            portada: "",
+            paginas: 0        
+          };
+        }
+
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
 
@@ -32,7 +38,13 @@ export default class FormLibro extends Component {
 
         if (this.validator.allValid()) {
           
-          const request = await this.libroService.postLibro(this.state);
+          let request;
+          if(this._mode == 'new'){
+            request = await this.libroService.postLibro(this.state);
+          }
+          if(this._mode == 'update'){
+            request = await this.libroService.updateLibro(this.state, this.state._id);
+          }
        
           console.log(request);
           if(request.data && request.data._id){

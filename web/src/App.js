@@ -16,6 +16,7 @@ import NavBar from './components/navbar';
 import Home from './views/home';
 import ListarLibros from './views/listar-libros';
 import NuevoLibro from './views/nuevo-libro';
+import ActualizarLibro from './views/actualizar-libro';
 
 // let match = useMatch();
 // let { attrUriParam } = useParams();
@@ -30,6 +31,7 @@ function App() {
               <Route path="/home" element={<Home/>} />     
               <Route path="/nuevo" element={<NuevoLibro/>} />   
               <Route path="/listar" element={<ListarLibros/>} />  
+              <Route path="/actualizar" element={<ActualizarLibro/>} />  
               <Route path="/" element={<Home/>} />
             </Routes>
     

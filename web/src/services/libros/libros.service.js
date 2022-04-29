@@ -36,11 +36,29 @@ export default class LibrosServices {
     }
 
     async getLibro(id) {
-        
+      return new Promise((resolve, reject)=>
+      axios.get(this.SERVICE_URL + '/' + id)
+        .then( response => {
+          console.log('success getLibro', response);
+          resolve(response);
+        })
+        .catch( error => {
+          console.log('error getLibro', error);
+          reject(error);
+        }));
     }
 
     async updateLibro(postObj, id){
-       
+      return new Promise((resolve, reject)=>
+      axios.put(this.SERVICE_URL + '/' + id, postObj)
+        .then( response => {
+          console.log('success updateLibro', response);
+          resolve(response);
+        })
+        .catch( error => {
+          console.log('error updateLibro', error);
+          reject(error);
+        }));
     }
 
     async deleteLibro(id){

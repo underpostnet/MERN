@@ -35,7 +35,8 @@ export default class FormLibro extends Component {
     }
     async updateLibro(event){
         console.log("updateLibro" , event);
-
+        window._updateLibro = event;
+        this.props.navigate('/actualizar');
     }
 
     renderTable(){
