@@ -118,6 +118,7 @@ export default class FormLibro extends Component {
             />
             {this.validator.message('editorial', this.state.editorial, 'required')}
 
+            Paginas
             <input 
                 className="in"
                 placeholder="Numero de Paginas" 
