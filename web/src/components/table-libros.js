@@ -40,21 +40,33 @@ export default class FormLibro extends Component {
     }
 
     renderTable(){
-        let _render = "<table>";   
+        let _render = `
+        <div class="w3-container" style="margin-top: 20px" >
+                <table class="w3-table-all">        
+        `;   
         
-        _render += "<tr>";
+        _render += `
+
+        <thead>
+        <tr class="w3-blue" >
+        
+        `;
         Object.keys(this.state.dataLibros.data[0]).map( 
         _header => {
-            _render += "<th>" + _header + "</th>";
+            if(_header!="__v"){
+                _render += "<th>" + _header + "</th>";
+            }
         });
-        _render += "</tr>";
+        _render += "<th></th><th></th></tr></thead>";
 
         this.state.dataLibros.data.map( 
         (_item, i) => {
             _render += "<tr>";
             Object.keys(_item).map( 
                 _key => {
-                    _render += "<th>" + _item[_key] + "</th>";
+                    if(_key!="__v"){
+                        _render += "<th>" + _item[_key] + "</th>";
+                    }                    
                 });
 
                 _render += "<th> <i class='fa fa-edit' id='edit-"+i+"' ></i> </th>";
@@ -70,7 +82,10 @@ export default class FormLibro extends Component {
             _render += "</tr>";
         });
       
-        _render += "</table>";
+        _render += `
+            </table>
+        </div>
+        `;
         return parse(_render);
     }
 

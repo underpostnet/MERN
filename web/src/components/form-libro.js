@@ -75,9 +75,11 @@ export default class FormLibro extends Component {
       render() {
         return (
           <form onSubmit={this.handleSubmit}>
-
-
+            <h1 className="section-title">
+                {this._mode=='update'?'Actualizar':'Nuevo Libro'}            
+            </h1>
             <input 
+                className="in"
                 placeholder="Nombre Libro" 
                 type="text" 
                 value={this.state.nombreLibro} 
@@ -87,6 +89,7 @@ export default class FormLibro extends Component {
             {this.validator.message('nombreLibro', this.state.nombreLibro, 'required')}
 
             <input 
+                className="in"
                 placeholder="ISBN" 
                 type="text" 
                 value={this.state.ISBN} 
@@ -96,6 +99,7 @@ export default class FormLibro extends Component {
             {this.validator.message('ISBN', this.state.ISBN, 'required')}
 
             <input 
+                className="in"
                 placeholder="Autor" 
                 type="text" 
                 value={this.state.autor}
@@ -105,6 +109,7 @@ export default class FormLibro extends Component {
             {this.validator.message('autor', this.state.autor, 'required')}
 
             <input 
+                className="in"
                 placeholder="Editorial" 
                 type="text" 
                 value={this.state.editorial} 
@@ -114,6 +119,7 @@ export default class FormLibro extends Component {
             {this.validator.message('editorial', this.state.editorial, 'required')}
 
             <input 
+                className="in"
                 placeholder="Numero de Paginas" 
                 type="number" 
                 value={this.state.paginas} 
@@ -123,7 +129,7 @@ export default class FormLibro extends Component {
             {this.validator.message('paginas', this.state.paginas, 'required')}
 
 
-            <input className="in" type="submit" value="Submit" />
+            <button className="in" type="submit" value="Submit"> Enviar </button>
           </form>
         );
       }
