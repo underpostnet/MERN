@@ -19,6 +19,7 @@ export default class FormLibro extends Component {
         };
     
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
 
         this.validator = new SimpleReactValidator();
 
@@ -45,10 +46,20 @@ export default class FormLibro extends Component {
           this.validator.showMessages();
           // rerender to show messages for the first time
           // you can use the autoForceUpdate option to do this automatically`
-          // this.forceUpdate();
+          this.forceUpdate();
         }
 
       }
+
+      handleChange(event){
+        let state = {};
+        state[event.target.name] = event.target.value;
+        if(event.target.name == 'paginas'){
+          state[event.target.name] = parseInt(state[event.target.name]);
+        }
+        console.log('handleChangue', event, state);
+        this.setState(state);
+      }    
     
       render() {
         return (
@@ -59,7 +70,8 @@ export default class FormLibro extends Component {
                 placeholder="Nombre Libro" 
                 type="text" 
                 value={this.state.nombreLibro} 
-                onChange={e => this.setState({ nombreLibro: e.target.value })} 
+                name="nombreLibro"
+                onChange={this.handleChange} 
             />
             {this.validator.message('nombreLibro', this.state.nombreLibro, 'required')}
 
@@ -67,15 +79,17 @@ export default class FormLibro extends Component {
                 placeholder="ISBN" 
                 type="text" 
                 value={this.state.ISBN} 
-                onChange={e => this.setState({ ISBN: e.target.value })} 
+                name="ISBN"
+                onChange={this.handleChange} 
             />
             {this.validator.message('ISBN', this.state.ISBN, 'required')}
 
             <input 
                 placeholder="Autor" 
                 type="text" 
-                value={this.state.autor} 
-                onChange={e => this.setState({ autor: e.target.value })} 
+                value={this.state.autor}
+                name="autor" 
+                onChange={this.handleChange} 
             />
             {this.validator.message('autor', this.state.autor, 'required')}
 
@@ -83,7 +97,8 @@ export default class FormLibro extends Component {
                 placeholder="Editorial" 
                 type="text" 
                 value={this.state.editorial} 
-                onChange={e => this.setState({ editorial: e.target.value })} 
+                name="editorial" 
+                onChange={this.handleChange}
             />
             {this.validator.message('editorial', this.state.editorial, 'required')}
 
@@ -91,7 +106,8 @@ export default class FormLibro extends Component {
                 placeholder="Numero de Paginas" 
                 type="number" 
                 value={this.state.paginas} 
-                onChange={e => this.setState({ paginas: parseInt(e.target.value) })} 
+                name="paginas" 
+                onChange={this.handleChange} 
             />
             {this.validator.message('paginas', this.state.paginas, 'required')}
 
