@@ -116,3 +116,8 @@ input {
 	display: block;
 	position: relative;
 }
+
+th {
+	border: 1px solid white;
+	font-weight: normal;
+}
