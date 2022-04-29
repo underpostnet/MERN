@@ -15,14 +15,12 @@ export default class FormLibro extends Component {
             }
         };
 
-        (async () => {
+    }
 
-            this.setState({
-                dataLibros: await this.libroServices.getLibros()
-            });
-           
-        })();
-
+    async componentDidMount() {
+        this.setState({
+            dataLibros: await this.libroServices.getLibros()
+        });               
     }
 
     render(){
