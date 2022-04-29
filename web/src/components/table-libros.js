@@ -24,6 +24,20 @@ export default class FormLibro extends Component {
         });               
     }
 
+    async deleteLibro(event){
+        console.log("deleteLibro" , event);
+        await this.libroServices.deleteLibro(event._id);
+        this.setState({
+            dataLibros: {
+                data: this.state.dataLibros.data.filter(libro => libro._id != event._id)
+            }
+        });
+    }
+    async updateLibro(event){
+        console.log("updateLibro" , event);
+
+    }
+
     renderTable(){
         let _render = "<table>";   
         
@@ -35,12 +49,23 @@ export default class FormLibro extends Component {
         _render += "</tr>";
 
         this.state.dataLibros.data.map( 
-        _item => {
+        (_item, i) => {
             _render += "<tr>";
             Object.keys(_item).map( 
                 _key => {
                     _render += "<th>" + _item[_key] + "</th>";
                 });
+
+                _render += "<th> <i class='fa fa-edit' id='edit-"+i+"' ></i> </th>";
+                _render += "<th> <i class='fa fa-trash' id='del-"+i+"' ></i> </th>";
+                
+                setTimeout( () => {
+                    document.querySelector('#edit-'+i).onclick = 
+                    () => this.updateLibro(_item);
+                    document.querySelector('#del-'+i).onclick = 
+                    () => this.deleteLibro(_item);                    
+                }, 0);
+
             _render += "</tr>";
         });
       

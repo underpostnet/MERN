@@ -44,7 +44,16 @@ export default class LibrosServices {
     }
 
     async deleteLibro(id){
-        
+      return new Promise((resolve, reject)=>
+      axios.delete(this.SERVICE_URL + '/' + id)
+        .then( response => {
+          console.log('success deleteLibro', response);
+          resolve(response);
+        })
+        .catch( error => {
+          console.log('error deleteLibro', error);
+          reject(error);
+        }));
     }
 
 }

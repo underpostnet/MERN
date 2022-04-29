@@ -120,4 +120,13 @@ input {
 th {
 	border: 1px solid white;
 	font-weight: normal;
+	padding: 5px;
+}
+
+.fa {
+	transition: .3s;
+	cursor: pointer;
+}
+.fa:hover {
+	color: magenta;
 }
