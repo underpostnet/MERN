@@ -1,8 +1,10 @@
 import FormLibro from "../components/form-libro";
+import { useNavigate } from "react-router-dom";
 
 function NuevoLibro(){
+    const navigate = useNavigate();
     return(
-        <FormLibro />
+        <FormLibro navigate={navigate} />
     )   
 }
 

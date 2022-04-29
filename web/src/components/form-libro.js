@@ -1,8 +1,6 @@
 import { Component } from "react";
 import SimpleReactValidator from 'simple-react-validator';
 import LibrosServices from '../services/libros/libros.service';
-// import { useNavigate } from "react-router-dom";
-// const navigate = useNavigate();
 
 export default class FormLibro extends Component {
     
@@ -39,6 +37,7 @@ export default class FormLibro extends Component {
           console.log(request);
           if(request.data && request.data._id){
             console.log('campos validos');
+            this.props.navigate('/listar');
            
           }
 
