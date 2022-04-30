@@ -70,7 +70,7 @@ export default class FormLibro extends Component {
             Object.keys(_item).map( 
                 _key => {
                     if(_key!="__v"){
-                        _render += "<th>" + _item[_key] + "</th>";
+                        _render += "<th>" + (_key=="portada" && _item[_key]!=""?"<img src='"+_item[_key]+"'>":_item[_key]) + "</th>";
                     }                    
                 });
 
