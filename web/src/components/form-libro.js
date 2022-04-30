@@ -65,11 +65,23 @@ export default class FormLibro extends Component {
 
       }
 
-      handleChange(event){
+      async fileToBase64(file){
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = error => reject(error);
+        });
+      };
+
+      async handleChange(event){
         let state = {};
         state[event.target.name] = event.target.value;
         if(event.target.name == 'paginas'){
           state[event.target.name] = parseInt(state[event.target.name]);
+        }
+        if(event.target.name == 'portada'){
+          state[event.target.name] = await this.fileToBase64(event.target.files[0]);
         }
         console.log('handleChangue', event, state);
         this.setState(state);
@@ -131,6 +143,14 @@ export default class FormLibro extends Component {
                 onChange={this.handleChange} 
             />
             {this.validator.message('paginas', this.state.paginas, 'required')}
+
+            Foto Portada
+            <input 
+                className="in"
+                type="file"                
+                name="portada" 
+                onChange={this.handleChange} 
+            />
 
 
             <button className="in" type="submit" value="Submit"> Enviar </button>
