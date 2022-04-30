@@ -49,8 +49,11 @@ export default class FormLibro extends Component {
           console.log(request);
           if(request.data && request.data._id){
             console.log('campos validos');
-            this.props.navigate('/listar');
-           
+            window._search = {
+              value: request.data._id,
+              key: "_id"
+            };
+            this.props.navigate('/detalle');           
           }
 
         } else {

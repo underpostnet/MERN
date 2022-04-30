@@ -61,6 +61,11 @@ export default class FormLibro extends Component {
 
         this.state.dataLibros.data.map( 
         (_item, i) => {
+
+            if(this.props._detalle && (_item[window._search.key]==window._search.value)==false){
+                return;
+            }
+
             _render += "<tr>";
             Object.keys(_item).map( 
                 _key => {

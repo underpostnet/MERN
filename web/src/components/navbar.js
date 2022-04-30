@@ -13,6 +13,8 @@ function NavBar() {
 
             <Link className='inl btn-navbar' to="/nuevo">Agregar Libro</Link>
 
+            <Link className='inl btn-navbar' to="/buscar">Buscar Libro</Link>
+
         </div>
     )
 }

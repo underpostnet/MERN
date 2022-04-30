@@ -17,6 +17,8 @@ import Home from './views/home';
 import ListarLibros from './views/listar-libros';
 import NuevoLibro from './views/nuevo-libro';
 import ActualizarLibro from './views/actualizar-libro';
+import BuscarLibro from './views/buscar-libro';
+import Detalle from './views/detalle';
 
 // let match = useMatch();
 // let { attrUriParam } = useParams();
@@ -32,6 +34,8 @@ function App() {
               <Route path="/nuevo" element={<NuevoLibro/>} />   
               <Route path="/listar" element={<ListarLibros/>} />  
               <Route path="/actualizar" element={<ActualizarLibro/>} />  
+              <Route path="/buscar" element={<BuscarLibro/>} /> 
+              <Route path="/detalle" element={<Detalle/>} /> 
               <Route path="/" element={<Home/>} />
             </Routes>
     
